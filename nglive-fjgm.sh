@@ -229,6 +229,7 @@ firewall-cmd --add-service=ftp --permanent &&
 firewall-cmd --add-service=http --permanent &&
 firewall-cmd --reload &&
 systemctl restart firewalld &&
+systemctl enable firewalld &&
 echo anonymous_enable=NO>>/etc/vsftpd/vsftpd.conf&&
 echo chroot_local_user=YES>>/etc/vsftpd/vsftpd.conf&&
 echo allow_writeable_chroot=YES>>/etc/vsftpd/vsftpd.conf&&
