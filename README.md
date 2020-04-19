@@ -1,5 +1,5 @@
 #一键自动下载脚本并自动安装配置好nginx-rtmp-hls-live直播服务器命令如下:
-yum -y install wget && wget https://github.com/yexing98/nglive-fjgm/raw/master/nglive-fjgm.sh && chmod +x nglive-fjgm.sh && bash nglive-fjgm.sh
+yum -y install wget && wget https://github.com/yexing98/nglive-fjgm/blob/master/nglive-fjgm.sh && chmod +x nglive-fjgm.sh && bash nglive-fjgm.sh
 #一步一步安装命令步骤如下：
 # nginx-live-server使用说明
 #首先打开直播服务器，然后按照如下步骤安装：
