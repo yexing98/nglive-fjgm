@@ -2,19 +2,19 @@
 rm -f /var/run/yum.pid	&&
 yum install -y wget	&&
 yum install -y git	&&
-git clone https://github.com/sivel/speedtest-cli.git&&
-yum -y install net-tools&&
-yum -y install vim&&
-git clone https://github.com/arut/nginx-rtmp-module.git&&
-wget http://nginx.org/download/nginx-1.8.1.tar.gz&&
-yum -y install gcc-c++&&
-yum -y install openssl openssl-devel&&
-yum -y install pcre pcre-devel&&
-yum -y install zlib zlib-devel&&
-yum -y install vsftpd&&
-tar -zxvf nginx-1.8.1.tar.gz&&
+git clone https://github.com/sivel/speedtest-cli.git	&&
+yum -y install net-tools	&&
+yum -y install vim	&&
+git clone https://github.com/arut/nginx-rtmp-module.git	&&
+wget http://nginx.org/download/nginx-1.8.1.tar.gz	&&
+yum -y install gcc-c++	&&
+yum -y install openssl openssl-devel	&&
+yum -y install pcre pcre-devel	&&
+yum -y install zlib zlib-devel	&&
+yum -y install vsftpd	&&
+tar -zxvf nginx-1.8.1.tar.gz	&&
 cd nginx-1.8.1&&
-./configure --prefix=/usr/local/nginx  --add-module=../nginx-rtmp-module  --with-http_ssl_module&&
+./configure --prefix=/usr/local/nginx  --add-module=../nginx-rtmp-module  --with-http_ssl_module	&&
 make	&& 
 make install	&&
 cd /root &&
