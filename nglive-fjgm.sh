@@ -58,7 +58,7 @@ http {
     #gzip  on;
 
     server {
-        listen       81;
+        listen       80;
         server_name  localhost;
 
         #charset koi8-r;
@@ -205,7 +205,7 @@ cat>/home/html/index.html<<EOF
 <body>
 <video id="my-video" class="video-js" controls preload="auto" width="640" height="480"
        poster="http://ppt.downhot.com/d/file/p/2014/08/12/9d92575b4962a981bd9af247ef142449.jpg" data-setup="{}">
-    <source src="rtmp://211.143.153.21/hls/live" type="rtmp/flv">
+    <source src="rtmp://129.204.27.222/hls/live" type="rtmp/flv">
     </p>
 </video>
 
@@ -233,6 +233,5 @@ echo chroot_local_user=YES>>/etc/vsftpd/vsftpd.conf&&
 echo allow_writeable_chroot=YES>>/etc/vsftpd/vsftpd.conf&&
 systemctl start vsftpd&&
 source  /etc/bashrc	&&
-cd speedtest-cli&&
-./speedtest.py --server 16171	&&
+wget -O btinstall.sh http://download.bt.cn/install/install_6.0.sh && sh btinstall.sh
 echo “all install completed” 
