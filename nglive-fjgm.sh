@@ -15,8 +15,7 @@ yum -y install vsftpd	&&
 tar -zxvf nginx-1.8.1.tar.gz	&&
 cd nginx-1.8.1&&
 ./configure --prefix=/usr/local/nginx  --add-module=../nginx-rtmp-module  --with-http_ssl_module	&&
-make	&& 
-make install	&&
+make&&make install	&&
 cd /root &&
 mkdir -p /home/html/hls	&&
 chmod 777 /home/html/hls	&&
