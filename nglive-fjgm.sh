@@ -222,6 +222,7 @@ alias stopng="/usr/local/nginx/sbin/nginx -s stop"
 alias startng="/usr/local/nginx/sbin/nginx -c  /usr/local/nginx/conf/nginx.conf"
 alias vimng="vim /usr/local/nginx/conf/nginx.conf"
 EOF
+systemctl start firewalld &&
 firewall-cmd --add-port=1935/tcp --permanent &&
 firewall-cmd --add-port=81/tcp --permanent &&
 firewall-cmd --add-service=ftp --permanent &&
