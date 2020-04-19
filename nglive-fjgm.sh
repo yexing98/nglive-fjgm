@@ -1,28 +1,28 @@
 #!/bin/bash
-rm -f /var/run/yum.pid		&&
+rm -f /var/run/yum.pid	&&
 yum install -y wget	&&
 yum install -y git	&&
-git clone https://github.com/sivel/speedtest-cli.git	&&
-yum -y install net-tools	&&
-yum -y install vim	&&
-git clone https://github.com/arut/nginx-rtmp-module.git	&&
-wget http://nginx.org/download/nginx-1.8.1.tar.gz	&&
-yum -y install gcc-c++	&&
-yum -y install openssl openssl-devel	&&
-yum -y install pcre pcre-devel	&&
-yum -y install zlib zlib-devel	&&
-yum -y install vsftpd	&&
-tar -zxvf nginx-1.8.1.tar.gz	&&
+git clone https://github.com/sivel/speedtest-cli.git&&
+yum -y install net-tools&&
+yum -y install vim&&
+git clone https://github.com/arut/nginx-rtmp-module.git&&
+wget http://nginx.org/download/nginx-1.8.1.tar.gz&&
+yum -y install gcc-c++&&
+yum -y install openssl openssl-devel&&
+yum -y install pcre pcre-devel&&
+yum -y install zlib zlib-devel&&
+yum -y install vsftpd&&
+tar -zxvf nginx-1.8.1.tar.gz&&
 cd nginx-1.8.1&&
-./configure --prefix=/usr/local/nginx  --add-module=../nginx-rtmp-module  --with-http_ssl_module	&&
-make && make install	&&
-cd /root	&&
-mkdir -p /home/html/hls	&&
-chmod 777 /home/html/hls	&&
-mkdir -p /home/html/record	&&
-chmod 777 /home/html/record	&&
-cp /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.bak	&&
-rm -f /usr/local/nginx/conf/nginx.conf	&&
+./configure --prefix=/usr/local/nginx  --add-module=../nginx-rtmp-module  --with-http_ssl_module&&
+make && make install&&
+cd /root&&
+mkdir -p /home/html/hls&&
+chmod 777 /home/html/hls&&
+mkdir -p /home/html/record&&
+chmod 777 /home/html/record&&
+cp /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.bak&&
+rm -f /usr/local/nginx/conf/nginx.conf&&
 cat>/usr/local/nginx/conf/nginx.conf<<EOF
 #user  nobody;
 worker_processes  1;
@@ -58,7 +58,7 @@ http {
     #gzip  on;
 
     server {
-        listen       80;
+        listen       81;
         server_name  localhost;
 
         #charset koi8-r;
@@ -174,7 +174,7 @@ rtmp{
 }
 
 EOF
-/usr/local/nginx/sbin/nginx -c  /usr/local/nginx/conf/nginx.conf	&&
+/usr/local/nginx/sbin/nginx -c  /usr/local/nginx/conf/nginx.conf&&
 cat>/lib/systemd/system/nginx.service<<EOF
 [Unit]
 Description=nginx
@@ -190,7 +190,7 @@ PrivateTmp=true
 [Install]
 WantedBy=multi-user.target
 EOF
-systemctl enable nginx.service	&&
+systemctl enable nginx.service&&
 mv /usr/local/nginx/html/index.html  /usr/local/nginx/html/index.html.bak&&
 cat>/home/html/index.html<<EOF
 <html>
@@ -212,7 +212,7 @@ cat>/home/html/index.html<<EOF
 </body>
 </html>
 EOF
-cd /root	&&
+cd /root&&
 cat>>/etc/bashrc<<EOF
 alias cdng="cd /usr/local/nginx/conf"
 alias cdhtml="cd /home/html"
@@ -231,9 +231,9 @@ systemctl restart firewalld &&
 echo anonymous_enable=NO>>/etc/vsftpd/vsftpd.conf&&
 echo chroot_local_user=YES>>/etc/vsftpd/vsftpd.conf&&
 echo allow_writeable_chroot=YES>>/etc/vsftpd/vsftpd.conf&&
-systemctl start vsftpd	&&
+systemctl start vsftpd&&
 source  /etc/bashrc	&&
-cd speedtest-cli	&&
+cd speedtest-cli&&
 ./speedtest.py --server 16171	&&
-echo °∞all install completed°± 
+echo ‚Äúall install completed‚Äù 
 
